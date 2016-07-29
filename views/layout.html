@@ -1,0 +1,71 @@
+<!--
+Author: Alvin Lin (alvin.lin.dev@gmail.com)
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block title %}
+    <title>ECCFinancing</title>
+    {% endblock %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet"
+      href="/public/bower/material-design-icons/iconfont/material-icons.css" />
+    <link rel="stylesheet"
+      href="/public/bower/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet"
+      href="/public/bower/Materialize/dist/css/materialize.min.css" />
+    <link rel="stylesheet"
+      href="/public/dist/minified.css" />
+
+    <script src="/public/bower/jquery/dist/jquery.min.js">
+    </script>
+    <script src="/public/bower/Materialize/dist/js/materialize.min.js">
+    </script>
+
+    {% block head %}
+    {% endblock %}
+  </head>
+
+  <body>
+
+    <!-- NAVBAR -->
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Eccfinancing</a>
+        <a href="#" data-activates="mobile-sidebar" class="button-collapse">
+          <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/index"><i class="material-icons">home</i></a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/investment">Investment</a></li>
+          <li><a href="/portfolio">Portfolio</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-sidebar">
+          <li><a href="/index">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/investment">Investment</a></li>
+          <li><a href="/portfolio">Portfolio</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    {% block body %}
+    {% endblock %}
+
+  </body>
+
+  <script>
+    $(document).ready(function() {
+      $(".button-collapse").sideNav();
+    });
+  </script>
+  {% block scripts %}
+  {% endblock %}
+</html>

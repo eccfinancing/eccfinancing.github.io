@@ -1,0 +1,26 @@
+{
+  "name": "eccfinancing",
+  "version": "1.0.0",
+  "description": "eccfinancing website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eccfinancing/web"
+  },
+  "author": "Alvin Lin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eccfinancing/web/issues"
+  },
+  "homepage": "http://eccfinancing.com",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "gmail-send": "^1.2.6",
+    "morgan": "^1.7.0",
+    "swig": "^1.4.2"
+  }
+}

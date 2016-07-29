@@ -1,0 +1,22 @@
+{
+  "name": "eccfinancing",
+  "version": "1.0.0",
+  "homepage": "https://github.com/eccfinancing/web",
+  "authors": [
+    "Alvin Lin <alvin.lin.dev@gmail.com>"
+  ],
+  "description": "eccfinancing website",
+  "main": "server.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.3",
+    "font-awesome": "fontawesome#^4.5.0",
+    "Materialize": "materialize#^0.97.6",
+    "material-design-icons": "^2.2.3"
+  }
+}
