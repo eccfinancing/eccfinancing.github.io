@@ -3,9 +3,17 @@
  * @author alvin.lin.dev@gmail.com (Alvin Lin)
  */
 
-// Constants
-var IP = process.env.IP || 'localhost';
-var PORT_NUMBER = process.env.PORT || 5000;
+ // Constants
+ var DEV_MODE = false;
+ var IP = process.env.IP || 'localhost';
+ var PORT_NUMBER = process.env.PORT || 5000;
+
+ // Sets the DEV_MODE constant during development if we run 'node server --dev'
+ process.argv.forEach(function(value, index, array) {
+   if (value == '--dev' || value == '--development') {
+     DEV_MODE = true;
+   }
+ });
 
 // Dependencies.
 var assert = require('assert');
@@ -41,6 +49,7 @@ app.get('/', function(request, response) {
 });
 
 app.get('/:page', function(request, response, next) {
+  console.log(request.params.page, request.method);
   var pages = ['index', 'about', 'investment', 'portfolio', 'contact'];
   if (pages.indexOf(request.params.page) >= 0) {
     response.render(request.params.page + '.html');

@@ -1,0 +1,66 @@
+<!--
+Author: Alvin Lin (alvin.lin.dev@gmail.com)
+-->
+
+{% extends 'layout.html' %}
+
+{% block body %}
+<form class="section container" id="contact-form">
+  <h3 class="center-align">Contact Us</h3>
+  <div class="row">
+    <div class="input-field col s6 offset-s3">
+      <i class="material-icons prefix">account_box</i>
+      <input id="contact-name" tabindex="1" type="text" autocomplete="off"
+        required />
+      <label for="contact-name">Name</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6 offset-s3">
+      <i class="material-icons prefix">email</i>
+      <input id="contact-email" tabindex="2" type="email" class="validate"
+        autocomplete="off" required />
+      <label for="contact-email" data-error="Invalid email!">Email</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6 offset-s3">
+      <i class="material-icons prefix">subject</i>
+      <textarea id="contact-message" tabindex="3" class="materialize-textarea">
+      </textarea>
+      <label for="contact-message">Message</label>
+    </div>
+  </div>
+  <div class="row center-align">
+    <button type="submit"
+      class="waves-effect waves-light btn center-align">
+      Send
+      <i class="material-icons right">send</i>
+    </button>
+  </div>
+</form>
+
+<script>
+  $('#contact-message').val('');
+  $('#contact-message').trigger('autoresize');
+  $('#contact-form').submit(function(event) {
+    event.preventDefault();
+    $('#contact-form button').addClass('disabled');
+    $('#contact-form input, #contact-message').attr('disabled', true);
+    $.post('/message', {
+      'name': $('#contact-name').val(),
+      'email': $('#contact-email').val(),
+      'message': $('#contact-message').val()
+    }, function(result) {
+      $('#contact-form button').removeClass('disabled');
+      $('#contact-form input, #contact-message').attr('disabled', false);
+      $('#contact-form input, #contact-message').val('');
+      if (result['error']) {
+        Materialize.toast('There was an error! Try again later', 4000);
+      } else {
+        Materialize.toast('Message sent!', 4000);
+      }
+    });
+  });
+</script>
+{% endblock %}
