@@ -35,8 +35,11 @@ Author: Alvin Lin (alvin.lin.dev@gmail.com)
     <!-- NAVBAR -->
     <nav>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Eccfinancing</a>
-        <a href="#" data-activates="mobile-sidebar" class="button-collapse">
+        <a href="/" class="brand-logo">
+          &nbsp;
+          eccfinancing
+        </a>
+        <a href="/" data-activates="mobile-sidebar" class="button-collapse">
           <i class="material-icons">menu</i>
         </a>
         <ul class="right hide-on-med-and-down">
@@ -59,12 +62,13 @@ Author: Alvin Lin (alvin.lin.dev@gmail.com)
     {% block body %}
     {% endblock %}
 
+
+
   </body>
 
   <script>
     $(document).ready(function() {
       $('.button-collapse').sideNav();
-      $('.parallax').parallax();
     });
   </script>
   {% block scripts %}
