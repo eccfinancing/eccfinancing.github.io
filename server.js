@@ -73,9 +73,10 @@ app.post('/message', function(request, response) {
       });
     }, 2500);
   } else {
-    var sender = request.body.email.strip();
-    var name = request.body.name.strip();
-    var message = request.body.message.strip();
+    var name = (request.body.name || '').trim();
+    var email = (request.body.email || '').trim();
+    var ticker = (request.body.ticker || '').trim();
+    var message = (request.body.message || '').trim();
     if (!sender || !name || !message) {
       response.send({
         error: 'One of your message fields was blank!',
@@ -84,9 +85,10 @@ app.post('/message', function(request, response) {
       return;
     }
     email({
-      from: request.body.email,
-      replyTo: request.body.email,
-      subject: 'eccfinancing - Message from ' + request.body.name,
+      from: email,
+      replyTo: email,
+      subject: 'eccfinancing - Message from ' + request.body.name +
+          ' from ' + ticker,
       text: request.body.message
     }, function(error, result) {
       response.send({
