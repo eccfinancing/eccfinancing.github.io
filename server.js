@@ -6,7 +6,7 @@
  // Constants
  var DEV_MODE = false;
  var IP = process.env.IP || 'localhost';
- var PORT_NUMBER = process.env.PORT || 5000;
+ var PORT = process.env.PORT || 5000;
 
  // Sets the DEV_MODE constant during development if we run 'node server --dev'
  process.argv.forEach(function(value, index, array) {
@@ -15,31 +15,22 @@
    }
  });
 
-// Dependencies.
+// Dependencies
 var assert = require('assert');
 var bodyParser = require('body-parser');
+var emailAlerts = require('email-alerts');
 var express = require('express');
-var gmailSend = require('gmail-send');
 var http = require('http');
 var morgan = require('morgan');
-var swig = require('swig');
 
-// Initialization.
+// Initialization
 var app = express();
-var email = gmailSend({
-  user: process.env.GMAIL_ACCOUNT,
-  pass: process.env.GMAIL_APPLICATION_PASSWORD,
-  to: process.env.GMAIL_ACCOUNT
-});
 var server = http.Server(app);
 
-app.engine('html', swig.renderFile);
-
-app.set('port', PORT_NUMBER);
-app.set('view engine', 'html');
+app.set('port', PORT);
+app.set('view engine', 'pug');
 app.use(morgan(':date[web] :method :url :req[header] :remote-addr :status'));
 app.use('/public', express.static(__dirname + '/public'));
-app.use('/scripts', express.static(__dirname + '/scripts'));
 // Use request.query for GET request params.
 // Use request.body for POST request params.
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -49,10 +40,9 @@ app.get('/', function(request, response) {
 });
 
 app.get('/:page', function(request, response, next) {
-  console.log(request.params.page, request.method);
   var pages = ['index', 'about', 'investment', 'portfolio', 'contact'];
   if (pages.indexOf(request.params.page) >= 0) {
-    response.render(request.params.page + '.html');
+    response.render(request.params.page);
   } else {
     next();
   }
@@ -65,51 +55,39 @@ app.post('/message', function(request, response) {
    * name - The name of the person.
    * message - The message content.
    */
-  if (DEV_MODE) {
-    setTimeout(function() {
-      response.send({
-        error: null,
-        result: null
-      });
-    }, 2500);
+  var name = (request.body.name || '').trim();
+  var email = (request.body.email || '').trim();
+  var ticker = (request.body.ticker || '').trim();
+  var message = (request.body.message || '').trim();
+  if (!name || !email || !message) {
+    response.send({
+      error: 'One of your message fields was blank!'
+    });
   } else {
-    var name = (request.body.name || '').trim();
-    var email = (request.body.email || '').trim();
-    var ticker = (request.body.ticker || '').trim();
-    var message = (request.body.message || '').trim();
-    if (!sender || !name || !message) {
+    var alert = emailAlerts({
+      fromEmail: email,
+      toEmail: DEV_MODE ? process.env.DEV_EMAIL : process.env.TO_EMAIL,
+      apiKey: process.env.SENDGRID_API_KEY
+    });
+    var subject = 'eccfinancing - Message from ' + request.body.name +
+    ' from ' + ticker;
+    alert.alert(subject, request.body.message, function(error) {
+      console.log(error);
       response.send({
-        error: 'One of your message fields was blank!',
-        result: null
-      });
-      return;
-    }
-    email({
-      from: email,
-      replyTo: email,
-      subject: 'eccfinancing - Message from ' + request.body.name +
-          ' from ' + ticker,
-      text: request.body.message
-    }, function(error, result) {
-      response.send({
-        error: error,
-        result: result
+        error: error
       });
     });
   }
 });
 
 app.use(function(request, response) {
-  response.status(400).render('404.html');
+  response.status(404).render('404');
 });
 
 // Starts the server.
-server.listen(PORT_NUMBER, function() {
-  console.log('STARTING SERVER ON PORT ' + PORT_NUMBER);
-  if (!process.env.GMAIL_ACCOUNT) {
-    throw new Error('No Gmail account specified!');
-  }
-  if (!process.env.GMAIL_APPLICATION_PASSWORD) {
-    throw new Error('No Gmail application password specified!');
+server.listen(PORT, function() {
+  console.log('STARTING SERVER ON PORT ' + PORT);
+  if (!process.env.SENDGRID_API_KEY) {
+    throw new Error('No SendGrid API Key specified!');
   }
 });

@@ -1,0 +1,34 @@
+extends layout.pug
+
+block body
+  form(id='contact-form' class='section container')
+    h3(class='center-align') Contact Us
+    div(class='row')
+      div(class='input-field col s6 offset-s3')
+        i(class='material-icons prefix') account_box
+        input(id='contact-name' tabindex='1' type='text' autocomplete='off'
+          required)
+        label(for='contact-name') Name
+    div(class='row')
+      div(class='input-field col s6 offset-s3')
+        i(class='material-icons prefix') email
+        input(id='contact-email' class='validate' tabindex='2' type='email'
+          autocomplete='off' required)
+        label(for='contact-email') Email
+    div(class='row')
+      div(class='input-field col s6 offset-s3')
+        i(class='material-icons prefix') business
+        input(id='contact-ticker' tabindex='3' type='text' autocomplete='off')
+        label(for='contact-ticker') Company Ticker
+    div(class='row')
+      div(class='input-field col s6 offset-s3')
+        i(class='material-icons prefix') subject
+        textarea(id='contact-message' class='materialize-textarea' tabindex='3')
+        label(for='contact-message') Message
+    div(class='row center-align')
+      button(type='submit' class='waves-effect waves-light btn' tabindex='4')
+        | Send
+        i(class='material-icons right') send
+
+block scripts
+  script(src='/public/js/contact.js')
