@@ -3,17 +3,16 @@
  * @author alvin.lin.dev@gmail.com (Alvin Lin)
  */
 
- // Constants
- var DEV_MODE = false;
- var IP = process.env.IP || 'localhost';
- var PORT = process.env.PORT || 5000;
+// Constants
+var DEV_MODE = false;
+var PORT = process.env.PORT || 5000;
 
- // Sets the DEV_MODE constant during development if we run 'node server --dev'
- process.argv.forEach(function(value, index, array) {
-   if (value == '--dev' || value == '--development') {
-     DEV_MODE = true;
-   }
- });
+// Sets the DEV_MODE constant during development if we run 'node server --dev'
+process.argv.forEach(function(value, index, array) {
+  if (value == '--dev' || value == '--development') {
+    DEV_MODE = true;
+  }
+});
 
 // Dependencies
 var assert = require('assert');
@@ -64,17 +63,23 @@ app.post('/message', function(request, response) {
       error: 'One of your message fields was blank!'
     });
   } else {
-    var alert = emailAlerts({
+    var alert1 = emailAlerts({
       fromEmail: email,
-      toEmail: DEV_MODE ? process.env.DEV_EMAIL : process.env.TO_EMAIL,
+      toEmail: DEV_MODE ? process.env.DEV_EMAIL : process.env.TO_EMAIL_1,
+      apiKey: process.env.SENDGRID_API_KEY
+    });
+    var alert2 = emailAlerts({
+      fromEmail: email,
+      toEmail: DEV_MODE ? process.env.DEV_EMAIL : process.env.TO_EMAIL_2,
       apiKey: process.env.SENDGRID_API_KEY
     });
     var subject = 'eccfinancing - Message from ' + request.body.name +
     ' from ' + ticker;
-    alert.alert(subject, request.body.message, function(error) {
-      console.log(error);
-      response.send({
-        error: error
+    alert1.alert(subject, request.body.message, function(error) {
+      alert2.alert(subject, request.body.message, function(error) {
+        response.send({
+          error: error
+        });
       });
     });
   }
