@@ -1,8 +1,25 @@
 extends layout.pug
 
 block body
+  div(class='parallax-container')
+    div(class='parallax')
+      img(src='/public/img/contact.jpg')
+    div(class='parallax-text')
+      h1(class='center') Contact Us
+  div(class='container')
+    div(class='row center')
+      div(class='col l4 s12')
+        h3 Phone
+        p(class='flow-text') 1-800-SEX-4FREE
+      div(class='col l4 s12')
+        h3 Email
+        p(class='flow-text') penis&#64;eccfinancing&#46;com
+      div(class='col l4 s12')
+        h3 Mailing Address
+        p(class='flow-text') 123 Sesame Street
+    div(class='divider')
+  h3(class='center') Or Leave A Message
   form(id='contact-form' class='section container')
-    h3(class='center-align') Contact Us
     div(class='row')
       div(class='input-field col s6 offset-s3')
         i(class='material-icons prefix') account_box
@@ -29,6 +46,7 @@ block body
       button(type='submit' class='waves-effect waves-light btn' tabindex='4')
         | Send
         i(class='material-icons right') send
+  br
 
 block scripts
   script(src='/public/js/contact.js')

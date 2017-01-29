@@ -17,11 +17,17 @@
   },
   "homepage": "http://eccfinancing.com",
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "email-alerts": "^2.2.2",
-    "express": "^4.14.0",
-    "gmail-send": "^1.2.6",
+    "body-parser": "^1.16.0",
+    "email-alerts": "^2.2.3",
+    "express": "^4.14.1",
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "less-plugin-autoprefix": "^1.5.1",
+    "less-plugin-clean-css": "^1.5.1",
+    "merge-stream": "^1.0.1",
     "morgan": "^1.7.0",
-    "pug": "^2.0.0-beta6"
+    "pug": "^2.0.0-beta9"
   }
 }

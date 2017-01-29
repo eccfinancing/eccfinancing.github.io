@@ -16,7 +16,7 @@ html
     )
     link(
       rel='stylesheet'
-      href='/public/css/styles.css'
+      href='/public/dist/styles.css'
     )
 
     script(src='/public/bower/jquery/dist/jquery.min.js')
@@ -25,13 +25,13 @@ html
   body
     nav
       div(class='nav-wrapper')
-        a(href='/' class='brand-logo') &nbsp; eccfinancing
+        a(href='/' class='brand-logo')
+          //- img(src='/public/img/logo_outline.svg')
         a(href='/' data-activates='mobile-sidebar' class='button-collapse')
           i(class='material-icons') menu
         ul(class='right hide-on-med-and-down')
           li
-            a(href='/index')
-              i(class='material-icons') home
+            a(href='/index') Home
           li
             a(href='/about') About Us
           li
@@ -39,7 +39,7 @@ html
           li
             a(href='/portfolio') Portfolio
           li
-            a(href='/contact') Contact
+            a(href='/contact') Contact Us
         ul(id='mobile-sidebar' class='side-nav')
           li
             a(href='/index') Home
@@ -50,11 +50,24 @@ html
           li
             a(href='/portfolio') Portfolio
           li
-            a(href='/contact') Contact
+            a(href='/contact') Contact Us
     block body
+
+    footer(class='page-footer')
+      div(class='container')
+        div(class='row center')
+          div(class='col s12')
+            h6 LOGO HERE
+          div(class='col s12')
+            a(href='/about') About Us
+            a(href='/investment') Investment
+            a(href='/portfolio') Portfolio
+      div(class='footer-copyright')
+        div(class='container') &copy; 2017 ECC Financing. All Rights Reserved.
 
   block scripts
   script.
     $(document).ready(function() {
       $('.button-collapse').sideNav();
+      $('.parallax').parallax();
     });

@@ -1,0 +1,14 @@
+{
+  "GULPFILE_VERSION": "3.1.0",
+  "DEFAULT_TASKS": ["less"],
+  "DEFAULT_WATCH": ["watch-less"],
+  "LESS_BUILD_RULES": [
+    {
+      "name": "global stylesheet",
+      "sourceFiles": [
+        "./public/less/styles.less"
+      ],
+      "outputFile": "./public/dist/styles.css"
+    }
+  ]
+}

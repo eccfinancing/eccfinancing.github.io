@@ -3,11 +3,24 @@ extends layout.pug
 block body
   div(class='parallax-container')
     div(class='parallax')
-      img(src='/public/img/bg.jpg')
-  h1(class='center') Website Under Construction!
+      img(src='/public/img/index.jpg')
+    div(class='parallax-text')
+      h1(class='center') ECC Financing
+      p(class='center flow-text') We do the bullshit you won't do
+  div(class='container')
+    div(class='row center')
+      div(class='col l4 s12')
+        h3 Some bullshit
+        p(class='flow-text') Lorem ipsum dolor sit amet
+      div(class='col l4 s12')
+        h3 Some bullshit
+        p(class='flow-text') Lorem ipsum dolor sit amet
+      div(class='col l4 s12')
+        h3 Some bullshit
+        p(class='flow-text') Lorem ipsum dolor sit amet
 
 block scripts
   script.
     $(document).ready(function() {
       $('.parallax').parallax();;
-    })
+    });

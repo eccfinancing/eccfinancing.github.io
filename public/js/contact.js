@@ -10,10 +10,10 @@ $(document).ready(function() {
     $('#contact-form button').addClass('disabled');
     $('#contact-form input, #contact-message').attr('disabled', true);
     $.post('/message', {
-      'name': $('#contact-name').val(),
-      'email': $('#contact-email').val(),
-      'ticker': $('#contact-ticker').val(),
-      'message': $('#contact-message').val()
+      name: $('#contact-name').val(),
+      email: $('#contact-email').val(),
+      ticker: $('#contact-ticker').val(),
+      message: $('#contact-message').val()
     }, function(result) {
       $('#contact-form button').removeClass('disabled');
       $('#contact-form input, #contact-message').attr('disabled', false);
