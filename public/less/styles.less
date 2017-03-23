@@ -1,7 +1,20 @@
 /**
  * Main stylesheet for webpage.
- * @author Alvin Lin (alvin.lin.dev@gmail.com)
+ * @author Alvin Lin (alvin@omgimanerd.tech)
  */
+
+@background-dark: #040707;
+@background-dark-hover: #3b3b3b;
+@light: #E8F1F2;
+@light-blue: #586BA4;
+@gold: #D2B582;
+
+html {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
 
 body {
   display: flex;
@@ -19,6 +32,7 @@ main {
 
 .parallax-text {
   margin: 200px auto 0;
+  font-family: 'Raleway';
 }
 
 .about-text {
@@ -26,24 +40,46 @@ main {
 }
 
 .nav-wrapper {
-  background-color: #a34243;
+  background-color: @background-dark;
+
+  .brand-logo {
+    height: 100%;
+  }
+
+  .brand-logo img {
+    height: 80%;
+    margin: 10%;
+  }
+
+  a {
+    color: @gold;
+
+    &:hover {
+      background-color: @background-dark-hover;
+    }
+  }
 }
 
 .page-footer {
-  background-color:  #a34243;
-  color: #ffffff;
+  background-color: @background-dark;
 
   a {
     padding: 0 10px;
-    color: #ffffff;
+    color: @gold;
+    transition: all 200ms;
     text-decoration: none;
 
     &:visited {
-      color: #ffffff;
+      color: @gold;
     }
 
     &:hover {
-      color: #ffffff;
+      color: @light;
     }
+  }
+
+  .footer-logo {
+    width: 80px;
+    margin: 15px;
   }
 }

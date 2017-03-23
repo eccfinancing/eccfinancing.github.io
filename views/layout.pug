@@ -8,11 +8,15 @@ html
 
     link(
       rel='stylesheet'
+      href='https://fonts.googleapis.com/css?family=Raleway'
+    )
+    link(
+      rel='stylesheet'
       href='/public/bower/material-design-icons/iconfont/material-icons.css'
     )
     link(
       rel='stylesheet'
-      href='/public/bower/Materialize/dist/css/materialize.min.css'
+      href='/public/bower/materialize/dist/css/materialize.min.css'
     )
     link(
       rel='stylesheet'
@@ -20,13 +24,13 @@ html
     )
 
     script(src='/public/bower/jquery/dist/jquery.min.js')
-    script(src='/public/bower/Materialize/dist/js/materialize.min.js')
+    script(src='/public/bower/materialize/dist/js/materialize.min.js')
 
   body
     nav
       div(class='nav-wrapper')
         a(href='/' class='brand-logo')
-          //- img(src='/public/img/logo_outline.svg')
+          img(src='/public/img/logo.png')
         a(href='/' data-activates='mobile-sidebar' class='button-collapse')
           i(class='material-icons') menu
         ul(class='right hide-on-med-and-down')
@@ -57,12 +61,12 @@ html
       div(class='container')
         div(class='row center')
           div(class='col s12')
-            h6 LOGO HERE
+            img(class='footer-logo' src='/public/img/logo.png')
           div(class='col s12')
             a(href='/about') About Us
             a(href='/investment') Investment
             a(href='/portfolio') Portfolio
-      div(class='footer-copyright')
+      div(class='footer-copyright center')
         div(class='container') &copy; 2017 ECC Financing. All Rights Reserved.
 
   block scripts
