@@ -21,7 +21,9 @@ var server = http.Server(app);
 app.set('port', PORT);
 app.set('view engine', 'pug');
 app.use(morgan('dev'));
+app.use('/lib', express.static(__dirname + '/node_modules'))
 app.use('/public', express.static(__dirname + '/public'));
+
 // Use request.query for GET request params.
 // Use request.body for POST request params.
 app.use(bodyParser.urlencoded({ extended: true }));

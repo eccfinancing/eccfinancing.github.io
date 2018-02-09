@@ -3,15 +3,13 @@
   "version": "1.0.0",
   "description": "eccfinancing website",
   "main": "server.js",
-  "scripts": {
-    "postinstall": "bower install"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/eccfinancing/web"
   },
   "author": "Alvin Lin",
-  "license": "ISC",
+  "license": "CC-BY-NC-4.0",
   "bugs": {
     "url": "https://github.com/eccfinancing/web/issues"
   },
@@ -24,8 +22,11 @@
     "gulp-less": "^3.3.0",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
+    "jquery": "^3.3.1",
     "less-plugin-autoprefix": "^1.5.1",
     "less-plugin-clean-css": "^1.5.1",
+    "material-design-icons": "^3.0.1",
+    "materialize-css": "^0.100.2",
     "merge-stream": "^1.0.1",
     "morgan": "^1.7.0",
     "pug": "^2.0.0-beta9"
