@@ -4,7 +4,7 @@
   "description": "eccfinancing website",
   "main": "server.js",
   "scripts": {
-    "postinstall": "bower install"
+    "compile": "gulp"
   },
   "repository": {
     "type": "git",
