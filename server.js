@@ -84,7 +84,5 @@ app.use(function(request, response) {
 // Starts the server.
 server.listen(PORT, function() {
   console.log('STARTING SERVER ON PORT ' + PORT);
-  if (!process.env.SENDGRID_API_KEY) {
-    throw new Error('No SendGrid API Key specified!');
-  }
+
 });
